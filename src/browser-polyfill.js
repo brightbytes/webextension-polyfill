@@ -34,13 +34,6 @@ const supportsPromises = () => {
   if (!HAS_BROWSER_NAMESPACE) {
     return false;
   }
-  // If `browser.runtime.lastError` doesn’t exist, assume promises are supported.
-  if (browser.runtime && typeof browser.runtime.lastError === "undefined") {
-    return true;
-  }
-  if (browser.extension && typeof browser.extension.lastError === "undefined") {
-    return true;
-  }
   try {
     return isThenable(browser.runtime.getPlatformInfo());
   } catch (error) { /* silence ESLint */ }
